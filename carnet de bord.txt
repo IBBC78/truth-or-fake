@@ -3,9 +3,22 @@
 
     • Je compris que c'était bien similaire au React auquelle je m'étais initité. J'ai compris que le typescript est plus strict mais permettait une meilleurs robustesse.
 
+    • Je me familiarise avec les notions de types, de hook,
+
 12 - 06 - 2025 :
-    • J'ai crée le dépot gitHub et y ai envoyer les fichiers/dossier de bases qui sont crée lors ce que l'on crée le repertoire depuis le terminal. 
+    • J'ai crée le dépot gitHub et y ai envoyer les fichiers/dossier de bases qui sont crée lors ce que l'on crée le repertoire depuis le terminal.
+
+    • j'ai crée l'architecture du projet en respectant les bonnes pratiques :
+        src/
+        ├── components/         # Composants réutilisables
+        ├── data/              # Données statiques (faux conseils)
+        ├── hooks/             # Hooks personnalisés
+        ├── types/             # Types TypeScript
+        ├── utils/             # Fonctions utilitaires
+        └── App.tsx
 
     • Pour commencer j'ai crée un bouton permettant d'afficher différents conseils aleatoire a chaque bouton. Cela pour tester l'appel fetch de l'API.
-    
+
     • J'ai crée les types qui me servierais dans le jeu : Conseil, etat de jeu, historique
+
+    • j'ai crée un fichier json avec des faux conseils généré à ce stade là par chatGPT. Ce type de fichier me sont bien familier.
