@@ -4,7 +4,7 @@ export interface Advice {
 }
 
 export interface AdviceHistory {
-    advice: Advice;
+    advice: string;
     wasReal:boolean;
     userGuess:boolean;
     wasCorrect: boolean;
@@ -14,7 +14,7 @@ export interface GameState {
     score: number;
     isGameOver: boolean;
     hasWon: boolean;
-    currentAdvice: Advice | null;
+    currentAdvice: string;
     isRealAdvice: boolean;
     history: AdviceHistory[];
 }
