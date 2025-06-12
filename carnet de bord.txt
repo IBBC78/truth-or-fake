@@ -1,0 +1,11 @@
+10 - 06 - 2025 :
+    • Je me documentes sur les bases du typescript n'ayant jamais utilisé ce langage.
+
+    • Je compris que c'était bien similaire au React auquelle je m'étais initité. J'ai compris que le typescript est plus strict mais permettait une meilleurs robustesse.
+
+12 - 06 - 2025 :
+    • J'ai crée le dépot gitHub et y ai envoyer les fichiers/dossier de bases qui sont crée lors ce que l'on crée le repertoire depuis le terminal. 
+
+    • Pour commencer j'ai crée un bouton permettant d'afficher différents conseils aleatoire a chaque bouton. Cela pour tester l'appel fetch de l'API.
+    
+    • J'ai crée les types qui me servierais dans le jeu : Conseil, etat de jeu, historique
