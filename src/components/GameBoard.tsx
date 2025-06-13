@@ -10,6 +10,7 @@ import {
     Progress,
 } from '@mantine/core';
 import { useGame } from '../hooks/useGame';
+import { IconCheck, IconX } from '@tabler/icons-react';
 
 export const GameBoard = () => {
     const { gameState, generateNewAdvice, makeGuess, resetGame, loading } = useGame();
@@ -35,47 +36,69 @@ export const GameBoard = () => {
 
     if (gameState.isGameOver) {
         return (
-            <Container>
-                <Paper>
-                    <Stack>
-                        <Title>
-                            {gameState.hasWon ? 'Congratulations!' : 'Game Over'}
-                        </Title>
-                        <Text>
-                            Score finale : {gameState.score}/20
-                        </Text>
-                        <Button onClick={resetGame}>
-                            Rejouer
-                        </Button>
-                    </Stack>
+            <Container size="md" py="xl">
+                <Paper shadow="md" p="xl" radius="md">
+                <Stack align="center">
+                    <Title order={1}>
+                    {gameState.hasWon ? 'Victoire !' : 'Défaite !'}
+                    </Title>
+                    <Text size="lg">
+                    Score final : {gameState.score}/20
+                    </Text>
+                    <Button onClick={resetGame} size="lg">
+                    Rejouer 
+                    </Button>
+                </Stack>
                 </Paper>
             </Container>
         );
     }
 
     return (
-        <Container>
+        <Container size="md" py="xl">
             <Stack>
-                <Paper>
-                    <Group>
-                        <Text>Truth or Fake</Text>
-                        <Text>Score: {gameState.score}/20</Text>
-                    </Group>
-                    <Progress value={(gameState.score / 20) * 100} />
+                <Paper shadow="md" p="md" radius="md">
+                <Group justify="space-between" mb="md">
+                    <Text size="xl" fw={700}>Truth or Fake</Text>
+                    <Text size="lg" fw={500}>Score: {gameState.score}/20</Text>
+                </Group>
+                <Progress value={(gameState.score / 20) * 100} size="lg" />
                 </Paper>
 
-                <Paper>
-                    <Stack>
-                        <Text>{loading ? 'Chargement...' : `"${gameState.currentAdvice}"`}</Text>
-
-                        <Group>
-                            <Button onClick={()=>handleGuess(true)} disabled={loading || !gameState.currentAdvice}>Vrai conseil</Button>
-
-                            <Button onClick={() => handleGuess(false)} disabled={loading || !gameState.currentAdvice}>Faux conseil</Button>
-                        </Group>
-                    </Stack>
+                <Paper shadow="md" p="xl" radius="md">
+                <Stack align="center">
+                    <Text 
+                    size="lg" 
+                    ta="center"
+                    style={{ minHeight: '120px', display: 'flex', alignItems: 'center' }}
+                    >
+                    {loading ? 'Chargement...' : `"${gameState.currentAdvice}"`}
+                    </Text>
+                    
+                    <Group>
+                    <Button
+                        leftSection={<IconCheck size={20} />}
+                        color="green"
+                        size="lg"
+                        onClick={() => handleGuess(true)}
+                        disabled={loading || !gameState.currentAdvice}
+                    >
+                        Vrai conseil
+                    </Button>
+                    
+                    <Button
+                        leftSection={<IconX size={20} />}
+                        color="red"
+                        size="lg"
+                        onClick={() => handleGuess(false)}
+                        disabled={loading || !gameState.currentAdvice}
+                    >
+                        Faux conseil
+                    </Button>
+                    </Group>
+                </Stack>
                 </Paper>
             </Stack>
-        </Container>    
+        </Container>
     )
 };
