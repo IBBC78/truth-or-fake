@@ -49,12 +49,10 @@
 
     - Création de l'interface utilisateur principale : 
         - Développement du composant GameBoard avec les composants Mantine (Paper, Button, Progress, Stack, Group). 
-        - L'interface est plus propre et professionnelle qu'avec du CSS basique.
 
     - Implémentation de la logique de jeu complète : Finalisation du hook useGame avec :
         - Gestion du cycle complet de jeu (génération → affichage → choix → vérification).
         - Conditions de fin de partie (victoire à 20 points, défaite à 0)
-    Système de notifications pour le feedback utilisateur.
 
     - Gestion de l'historique des parties : 
         - Création du composant GameHistory qui affiche les 10 dernières actions avec badges colorés (vrai/faux, correct/incorrect). 
