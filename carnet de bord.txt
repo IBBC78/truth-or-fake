@@ -1,24 +1,61 @@
-10 - 06 - 2025 :
-    • Je me documentes sur les bases du typescript n'ayant jamais utilisé ce langage.
+10-06-2025 : Découverte du sujet de test et de la stack utilisée
 
-    • Je compris que c'était bien similaire au React auquelle je m'étais initité. J'ai compris que le typescript est plus strict mais permettait une meilleurs robustesse.
+    - Je me documente sur les bases de TypeScript, n’ayant jamais utilisé ce langage auparavant.
 
-    • Je me familiarise avec les notions de types, de hook,
+    - J’ai compris que sa syntaxe et ses concepts sont similaires à ceux de React, auquel je m’étais déjà initié. TypeScript est cependant plus strict, ce qui permet une meilleure robustesse du code.
 
-12 - 06 - 2025 :
-    • J'ai crée le dépot gitHub et y ai envoyer les fichiers/dossier de bases qui sont crée lors ce que l'on crée le repertoire depuis le terminal.
+    - Je me familiarise avec les notions de types et de hooks.
 
-    • j'ai crée l'architecture du projet en respectant les bonnes pratiques :
-        src/
-        ├── components/         # Composants réutilisables
-        ├── data/              # Données statiques (faux conseils)
-        ├── hooks/             # Hooks personnalisés
-        ├── types/             # Types TypeScript
-        ├── utils/             # Fonctions utilitaires
-        └── App.tsx
+12-06-2025 : Création du dépôt, réflexion sur la logique de jeu, implémentation des premières mécaniques
 
-    • Pour commencer j'ai crée un bouton permettant d'afficher différents conseils aleatoire a chaque bouton. Cela pour tester l'appel fetch de l'API.
+    - J’ai créé le dépôt GitHub et y ai envoyé les fichiers et dossiers de base générés lors de l’initialisation du répertoire depuis le terminal.
 
-    • J'ai crée les types qui me servierais dans le jeu : Conseil, etat de jeu, historique
+    - J’ai mis en place l’architecture du projet en respectant les bonnes pratiques :
+    src/
+    ├── components/         # Composants réutilisables
+    ├── data/              # Données statiques (faux conseils ici)
+    ├── hooks/             # Hooks personnalisés
+    ├── types/             # Types TypeScript
+    ├── utils/             # Fonctions utilitaires
+    └── App.tsx
 
-    • j'ai crée un fichier json avec des faux conseils généré à ce stade là par chatGPT. Ce type de fichier me sont bien familier.
+    - Pour commencer, j’ai créé un bouton permettant d’afficher différents conseils aléatoires à chaque clic. Cela m’a permis de tester l’appel à l’API via fetch.
+
+    - J’ai créé les types qui me serviront dans le jeu : Conseil, état de jeu, historique.
+
+    - J’ai généré un fichier JSON avec de faux conseils (générés par ChatGPT à ce stade). Ce type de fichier m’est familier.
+
+    - Je réfléchis maintenant à la logique à mettre en place dans le jeu :
+
+    - Choix aléatoire d’un vrai conseil ou d’un faux conseil, avec 50% de chance pour chaque issue (similaire à un pile ou face). Si vrai : appel à l’API, sinon : pioche aléatoire dans fakeAdvices.json.
+
+    - Affichage pour l’utilisateur.
+
+    - Vérification de la réponse : userGuess === isRealAdvice ? Attribution du point en conséquence.
+
+    - Mise à jour du score et de l’historique.
+
+    - Implémentation des hooks useAdviceAPI et useGame :
+        - Méthode pour l’appel à l’API.
+        - Constante pour l’état de jeu initial (notamment pour le reset).
+        - Méthode pour exécuter les mécaniques de jeu.
+
+
+13-06-2025 : Intégration de Mantine, création de nouveaux composants, gestion de l’historique
+
+    - Découverte et intégration de Mantine UI : 
+        - Première fois que j'utilise cette bibliothèque de composants. 
+        - J'ai appris à l'installer et la configurer dans main.tsx avec MantineProvider et les imports CSS nécessaires.
+
+    - Création de l'interface utilisateur principale : 
+        - Développement du composant GameBoard avec les composants Mantine (Paper, Button, Progress, Stack, Group). 
+        - L'interface est plus propre et professionnelle qu'avec du CSS basique.
+
+    - Implémentation de la logique de jeu complète : Finalisation du hook useGame avec :
+        - Gestion du cycle complet de jeu (génération → affichage → choix → vérification).
+        - Conditions de fin de partie (victoire à 20 points, défaite à 0)
+    Système de notifications pour le feedback utilisateur.
+
+    - Gestion de l'historique des parties : 
+        - Création du composant GameHistory qui affiche les 10 dernières actions avec badges colorés (vrai/faux, correct/incorrect). 
+        - Utilisation de ScrollArea de Mantine pour la navigation.
