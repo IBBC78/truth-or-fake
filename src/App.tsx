@@ -4,15 +4,15 @@ import { useGame } from './hooks/useGame';
 import { Grid } from '@mantine/core';
 
 function App() {
-  const { gameState } = useGame();
+  const gameLogic = useGame();
 
   return (
     <Grid>
       <Grid.Col span={8}>
-        <GameBoard />
+        <GameBoard gameLogic = {gameLogic}/>
       </Grid.Col>
       <Grid.Col span={4}>
-        <GameHistory history={gameState.history} />
+        <GameHistory history={gameLogic.gameState.history} />
       </Grid.Col>
     </Grid>
   );

@@ -12,8 +12,12 @@ import {
 import { useGame } from '../hooks/useGame';
 import { IconCheck, IconX } from '@tabler/icons-react';
 
-export const GameBoard = () => {
-    const { gameState, generateNewAdvice, makeGuess, resetGame, loading } = useGame();
+interface GameBoardProps {
+    gameLogic: ReturnType<typeof useGame>;
+}
+
+export const GameBoard = ({gameLogic} : GameBoardProps) => {
+    const { gameState, generateNewAdvice, makeGuess, resetGame, loading } = gameLogic;
 
     useEffect(() => {
         if (!gameState.isGameOver && !gameState.currentAdvice) {
