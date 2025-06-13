@@ -8,9 +8,11 @@ import {
     Stack,
     Title,
     Progress,
+    Badge,
 } from '@mantine/core';
 import { useGame } from '../hooks/useGame';
 import { IconCheck, IconX } from '@tabler/icons-react';
+import classes from '../css/StatsCard.module.css';
 
 interface GameBoardProps {
     gameLogic: ReturnType<typeof useGame>;
@@ -61,21 +63,33 @@ export const GameBoard = ({gameLogic} : GameBoardProps) => {
     return (
         <Container size="md" py="xl">
             <Stack>
-                <Paper shadow="md" p="md" radius="md">
-                <Group justify="space-between" mb="md">
-                    <Text size="xl" fw={700}>Truth or Fake</Text>
-                    <Text size="lg" fw={500}>Score: {gameState.score}/20</Text>
-                </Group>
-                <Progress value={(gameState.score / 20) * 100} size="lg" />
+
+                <Paper radius="md" withBorder className={classes.card}>
+
+                    <Text ta="center" fw={700} className={classes.title}>
+                        Truth or Fake
+                    </Text>
+                    <Text c="dimmed" ta="center" fz="sm">
+                        Score: {gameState.score}/20
+                    </Text>
+
+                    <Group justify="space-between" mt="xs">
+                        <Text fz="sm" c="dimmed">
+                        Progress
+                        </Text>
+                    </Group>
+
+                    <Progress value={(gameState.score / 20) * 100} mt={5} />
+
+                    <Group justify="space-between" mt="md">
+                        <Text fz="sm">{gameState.score} / 20 </Text>
+                        <Badge size="sm">{20 - gameState.score} left</Badge>
+                    </Group>
                 </Paper>
 
-                <Paper shadow="md" p="xl" radius="md">
+                <Paper withBorder p="xl" radius="md">
                 <Stack align="center">
-                    <Text 
-                    size="lg" 
-                    ta="center"
-                    style={{ minHeight: '120px', display: 'flex', alignItems: 'center' }}
-                    >
+                    <Text size="lg" ta="center" fw={500}>
                     {loading ? 'Chargement...' : `"${gameState.currentAdvice}"`}
                     </Text>
                     
