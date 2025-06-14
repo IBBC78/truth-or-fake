@@ -57,3 +57,9 @@
     - Gestion de l'historique des parties : 
         - Création du composant GameHistory qui affiche les 10 dernières actions avec badges colorés (vrai/faux, correct/incorrect). 
         - Utilisation de ScrollArea de Mantine pour la navigation.
+
+14-06-2025:
+    - En visitant le site ui.mantin.dev j'y ai vu les composants mis en ligne en open source. J'ai ainsi récupéré des élements:
+        - le changement de theme
+        - un Header/Footer
+        - une barre de progression
