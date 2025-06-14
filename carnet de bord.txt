@@ -63,3 +63,5 @@
         - le changement de theme
         - un Header/Footer
         - une barre de progression
+
+    - J'ai remarqué un bug: les boutons vrai et faux ne se desactive pas pendant le chargement d'un nouveau conseil, ou pas directement. Le joueur peu donc gagner plusieurs points en rappuyant sr le bouton pour un meme conseil.
