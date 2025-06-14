@@ -9,7 +9,7 @@ export function HeaderTabs() {
 
   return (
     <div className={classes.header}>
-      <Container className={classes.mainSection} size="md" justify-contents="space-between" align-items="center">
+      <Container className={classes.mainSection} size="md">
         <ActionToggle/>
         <div className={classes.title}>
           <h3>Truth or Fake</h3>

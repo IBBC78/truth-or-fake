@@ -8,4 +8,6 @@
 .mainSection {
   padding-bottom: var(--mantine-spacing-sm);
   display: flex;
+  justify-content: space-between; 
+  align-items: center;
 }
