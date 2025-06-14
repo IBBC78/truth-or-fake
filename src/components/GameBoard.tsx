@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
     Container,
     Paper,
@@ -20,6 +20,7 @@ interface GameBoardProps {
 
 export const GameBoard = ({gameLogic} : GameBoardProps) => {
     const { gameState, generateNewAdvice, makeGuess, resetGame, loading } = gameLogic;
+    const [buttonsDisabled, setButtonsDisabled] = useState(false);
 
     useEffect(() => {
         if (!gameState.isGameOver && !gameState.currentAdvice) {
@@ -28,6 +29,8 @@ export const GameBoard = ({gameLogic} : GameBoardProps) => {
     }, [gameState.isGameOver, gameState.currentAdvice, generateNewAdvice]);
 
     const handleGuess = (isReal: boolean) => {
+        if (buttonsDisabled) return;
+        setButtonsDisabled(true);
         makeGuess(isReal);
 
         if (
@@ -36,6 +39,7 @@ export const GameBoard = ({gameLogic} : GameBoardProps) => {
         ) {
             setTimeout(() => {
                 generateNewAdvice();
+                setButtonsDisabled(false);
             }, 1500);
         }
     };
@@ -99,7 +103,7 @@ export const GameBoard = ({gameLogic} : GameBoardProps) => {
                         color="green"
                         size="lg"
                         onClick={() => handleGuess(true)}
-                        disabled={loading || !gameState.currentAdvice}
+                        disabled={buttonsDisabled || loading || !gameState.currentAdvice}
                     >
                         Vrai conseil
                     </Button>
@@ -109,7 +113,7 @@ export const GameBoard = ({gameLogic} : GameBoardProps) => {
                         color="red"
                         size="lg"
                         onClick={() => handleGuess(false)}
-                        disabled={loading || !gameState.currentAdvice}
+                        disabled={buttonsDisabled || loading || !gameState.currentAdvice}
                     >
                         Faux conseil
                     </Button>
