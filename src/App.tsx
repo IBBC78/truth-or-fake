@@ -1,8 +1,9 @@
 import { GameBoard } from './components/GameBoard';
 import { GameHistory } from './components/GameHistory';
-import { ActionToggle } from './components/colorActionToggle';
+import { HeaderTabs } from './components/HeaderTabs';
+import { FooterSimple } from './components/FooterSimple';
 import { useGame } from './hooks/useGame';
-import { Grid } from '@mantine/core';
+import { Grid, GridCol } from '@mantine/core';
 
 function App() {
   const gameLogic = useGame();
@@ -10,14 +11,17 @@ function App() {
   return (
     <Grid>
       <Grid.Col>
-        <ActionToggle/>
+        <HeaderTabs />
       </Grid.Col>
       <Grid.Col>
         <GameBoard gameLogic = {gameLogic}/>
       </Grid.Col>
-      <Grid.Col>
+      <Grid.Col >
         <GameHistory history={gameLogic.gameState.history} />
       </Grid.Col>
+      <GridCol>
+        <FooterSimple />
+      </GridCol>
     </Grid>
   );
 }
