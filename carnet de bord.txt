@@ -65,3 +65,5 @@
         - une barre de progression
 
     - J'ai remarqué un bug: les boutons vrai et faux ne se desactive pas pendant le chargement d'un nouveau conseil, ou pas directement. Le joueur peu donc gagner plusieurs points en rappuyant sr le bouton pour un meme conseil.
+
+    - Le problème venait du fait que le bouton ne se désactivais pas directement à l'appuie mais au moment ou il n'y a plus de conseil courant 'CurrentAdvice'. Or il y avait en petit temps de chargement entre les états de CurrentAdvice. J'ai donc changer cette logique en rajoutant un etat locale 'buttonDisabled' qui s'active au moment du clique et se désactive au moment ou le nouveau conseil est chargé.
