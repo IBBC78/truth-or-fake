@@ -3,22 +3,24 @@
   height: 22px;
 }
 
+/* Dark mode styles */
 .dark {
-  @mixin dark {
+  dark {
     display: none;
   }
 
-  @mixin light {
+  light {
     display: block;
   }
 }
 
+/* Light mode styles */
 .light {
-  @mixin light {
+  light {
     display: none;
   }
 
-  @mixin dark {
+  dark {
     display: block;
   }
 }

@@ -1,69 +1,60 @@
 10-06-2025 : Découverte du sujet de test et de la stack utilisée
 
-    - Je me documente sur les bases de TypeScript, n’ayant jamais utilisé ce langage auparavant.
-
-    - J’ai compris que sa syntaxe et ses concepts sont similaires à ceux de React, auquel je m’étais déjà initié. TypeScript est cependant plus strict, ce qui permet une meilleure robustesse du code.
-
-    - Je me familiarise avec les notions de types et de hooks.
+- Je me documente sur les bases de TypeScript, n’ayant jamais utilisé ce langage auparavant.
+- J’ai compris que sa syntaxe et ses concepts sont similaires à ceux de React, auquel je m’étais déjà initié. TypeScript est cependant plus strict, ce qui permet une meilleure robustesse du code.
+- Je me familiarise avec les notions de types et de hooks.
 
 12-06-2025 : Création du dépôt, réflexion sur la logique de jeu, implémentation des premières mécaniques
 
-    - J’ai créé le dépôt GitHub et y ai envoyé les fichiers et dossiers de base générés lors de l’initialisation du répertoire depuis le terminal.
-
-    - J’ai mis en place l’architecture du projet en respectant les bonnes pratiques :
-    src/
-    ├── components/         # Composants réutilisables
-    ├── data/              # Données statiques (faux conseils ici)
-    ├── hooks/             # Hooks personnalisés
-    ├── types/             # Types TypeScript
-    ├── utils/             # Fonctions utilitaires
-    └── App.tsx
-
-    - Pour commencer, j’ai créé un bouton permettant d’afficher différents conseils aléatoires à chaque clic. Cela m’a permis de tester l’appel à l’API via fetch.
-
-    - J’ai créé les types qui me serviront dans le jeu : Conseil, état de jeu, historique.
-
-    - J’ai généré un fichier JSON avec de faux conseils (générés par ChatGPT à ce stade). Ce type de fichier m’est familier.
-
-    - Je réfléchis maintenant à la logique à mettre en place dans le jeu :
-
-    - Choix aléatoire d’un vrai conseil ou d’un faux conseil, avec 50% de chance pour chaque issue (similaire à un pile ou face). Si vrai : appel à l’API, sinon : pioche aléatoire dans fakeAdvices.json.
-
-    - Affichage pour l’utilisateur.
-
-    - Vérification de la réponse : userGuess === isRealAdvice ? Attribution du point en conséquence.
-
-    - Mise à jour du score et de l’historique.
-
-    - Implémentation des hooks useAdviceAPI et useGame :
-        - Méthode pour l’appel à l’API.
-        - Constante pour l’état de jeu initial (notamment pour le reset).
-        - Méthode pour exécuter les mécaniques de jeu.
-
+- J’ai créé le dépôt GitHub et y ai envoyé les fichiers et dossiers de base générés lors de l’initialisation du répertoire depuis le terminal.
+- J’ai mis en place l’architecture du projet en respectant les bonnes pratiques :
+  src/
+  ├── components/         # Composants réutilisables
+  ├── data/              # Données statiques (faux conseils ici)
+  ├── hooks/             # Hooks personnalisés
+  ├── types/             # Types TypeScript
+  ├── utils/             # Fonctions utilitaires
+  └── App.tsx
+- Pour commencer, j’ai créé un bouton permettant d’afficher différents conseils aléatoires à chaque clic. Cela m’a permis de tester l’appel à l’API via fetch.
+- J’ai créé les types qui me serviront dans le jeu : Conseil, état de jeu, historique.
+- J’ai généré un fichier JSON avec de faux conseils (générés par ChatGPT à ce stade). Ce type de fichier m’est familier.
+- Je réfléchis maintenant à la logique à mettre en place dans le jeu :
+  - Choix aléatoire d’un vrai conseil ou d’un faux conseil, avec 50% de chance pour chaque issue (similaire à un pile ou face). Si vrai : appel à l’API, sinon : pioche aléatoire dans fakeAdvices.json.
+  - Affichage pour l’utilisateur.
+  - Vérification de la réponse : userGuess === isRealAdvice ? Attribution du point en conséquence.
+  - Mise à jour du score et de l’historique.
+- Implémentation des hooks useAdviceAPI et useGame :
+  - Méthode pour l’appel à l’API.
+  - Constante pour l’état de jeu initial (notamment pour le reset).
+  - Méthode pour exécuter les mécaniques de jeu.
 
 13-06-2025 : Intégration de Mantine, création de nouveaux composants, gestion de l’historique
 
-    - Découverte et intégration de Mantine UI : 
-        - Première fois que j'utilise cette bibliothèque de composants. 
-        - J'ai appris à l'installer et la configurer dans main.tsx avec MantineProvider et les imports CSS nécessaires.
+- Découverte et intégration de Mantine UI :
+  - Première fois que j'utilise cette bibliothèque de composants.
+  - J'ai appris à l'installer et la configurer dans main.tsx avec MantineProvider et les imports CSS nécessaires.
+- Création de l'interface utilisateur principale :
+  - Développement du composant GameBoard avec les composants Mantine (Paper, Button, Progress, Stack, Group).
+- Implémentation de la logique de jeu complète : Finalisation du hook useGame avec :
+  - Gestion du cycle complet de jeu (génération → affichage → choix → vérification).
+  - Conditions de fin de partie (victoire à 20 points, défaite à 0).
+- Gestion de l'historique des parties :
+  - Création du composant GameHistory qui affiche les 10 dernières actions avec badges colorés (vrai/faux, correct/incorrect).
+  - Utilisation de ScrollArea de Mantine pour la navigation.
 
-    - Création de l'interface utilisateur principale : 
-        - Développement du composant GameBoard avec les composants Mantine (Paper, Button, Progress, Stack, Group). 
+14-06-2025 :
 
-    - Implémentation de la logique de jeu complète : Finalisation du hook useGame avec :
-        - Gestion du cycle complet de jeu (génération → affichage → choix → vérification).
-        - Conditions de fin de partie (victoire à 20 points, défaite à 0)
+- En visitant le site ui.mantin.dev j'y ai vu les composants mis en ligne en open source. J'ai ainsi récupéré des éléments :
+  - le changement de thème
+  - un Header/Footer
+  - une barre de progression
+- J'ai remarqué un bug : les boutons vrai et faux ne se désactivent pas pendant le chargement d'un nouveau conseil, ou pas directement. Le joueur peut donc gagner plusieurs points en rappuyant sur le bouton pour un même conseil.
+- Le problème venait du fait que le bouton ne se désactivait pas directement à l'appui mais au moment où il n'y a plus de conseil courant ('CurrentAdvice'). Or il y avait un petit temps de chargement entre les états de CurrentAdvice. J'ai donc changé cette logique en rajoutant un état local 'buttonDisabled' qui s'active au moment du clic et se désactive au moment où le nouveau conseil est chargé.
 
-    - Gestion de l'historique des parties : 
-        - Création du composant GameHistory qui affiche les 10 dernières actions avec badges colorés (vrai/faux, correct/incorrect). 
-        - Utilisation de ScrollArea de Mantine pour la navigation.
+16-06-2025 :
 
-14-06-2025:
-    - En visitant le site ui.mantin.dev j'y ai vu les composants mis en ligne en open source. J'ai ainsi récupéré des élements:
-        - le changement de theme
-        - un Header/Footer
-        - une barre de progression
-
-    - J'ai remarqué un bug: les boutons vrai et faux ne se desactive pas pendant le chargement d'un nouveau conseil, ou pas directement. Le joueur peu donc gagner plusieurs points en rappuyant sr le bouton pour un meme conseil.
-
-    - Le problème venait du fait que le bouton ne se désactivais pas directement à l'appuie mais au moment ou il n'y a plus de conseil courant 'CurrentAdvice'. Or il y avait en petit temps de chargement entre les états de CurrentAdvice. J'ai donc changer cette logique en rajoutant un etat locale 'buttonDisabled' qui s'active au moment du clique et se désactive au moment ou le nouveau conseil est chargé.
+- Finalisation du rendu :
+  - commentaires
+  - carnet de bord
+  - Readme
+- Changement de l'interface pour afficher l'historique comme une side bar à droite sur un écran large.

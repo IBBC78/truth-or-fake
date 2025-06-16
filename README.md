@@ -1,3 +1,58 @@
+# Truth or Fake – Technical Test
+
+This project is a React application developed as part of a technical test. It is an interactive game where the user must guess whether a displayed piece of advice is true or false. The interface uses the [Mantine](https://mantine.dev/) library for a modern and responsive UI.
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (version 18 or higher recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+## Installing Dependencies
+
+Install the project dependencies with:
+
+```sh
+npm install
+```
+
+Main dependencies include:
+- [React](https://react.dev/): UI library
+- [Mantine](https://mantine.dev/): Modern React UI components
+- [Vite](https://vitejs.dev/): Fast development tool for React/TypeScript
+
+## Running the Project in Development Mode
+
+To start the development server:
+
+```sh
+npm run dev
+```
+
+The project will be available at the address shown in your terminal (default: http://localhost:5173).
+
+## Useful Scripts
+
+- `npm run dev`: start the development server
+- `npm run build`: build the project for production
+- `npm run preview`: locally preview the production build
+
+## Project Structure
+
+- `src/components/`: reusable components (GameBoard, GameHistory, etc.)
+- `src/hooks/`: custom hooks
+- `src/types/`: TypeScript definitions
+- `src/utils/`: utility functions
+- `public/`: static files
+
+## Notes
+
+This project was created as part of a technical test.  
+Feel free to browse the source code for more implementation details.
+
+---
+
+© 2025 – React/TypeScript/Mantine Technical Test
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

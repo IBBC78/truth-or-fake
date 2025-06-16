@@ -1,3 +1,9 @@
+/* This file is part of Mantine, a React component library.
+ * https://mantine.dev/
+ *
+ * Mantine is released under the MIT license.
+ */
+
 .footer {
   margin-top: 30px;
   border-top: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));

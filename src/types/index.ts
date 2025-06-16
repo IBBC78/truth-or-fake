@@ -1,3 +1,5 @@
+// interfaces make it easier to define the shape of objects in TypeScript
+
 export interface Advice {
     id: number;
     advice: string;

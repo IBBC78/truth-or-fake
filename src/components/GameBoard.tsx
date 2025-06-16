@@ -18,6 +18,13 @@ interface GameBoardProps {
     gameLogic: ReturnType<typeof useGame>;
 }
 
+/**
+ * GameBoard component displays the main game interface, including the current advice,
+ * score, and buttons to make guesses.
+ * 
+ * @param {GameBoardProps} props - The properties for the GameBoard component.
+ * @returns {JSX.Element} The rendered GameBoard component.
+ */
 export const GameBoard = ({gameLogic} : GameBoardProps) => {
     const { gameState, generateNewAdvice, makeGuess, resetGame, loading } = gameLogic;
     const [buttonsDisabled, setButtonsDisabled] = useState(false);
@@ -29,14 +36,17 @@ export const GameBoard = ({gameLogic} : GameBoardProps) => {
     }, [gameState.isGameOver, gameState.currentAdvice, generateNewAdvice]);
 
     const handleGuess = (isReal: boolean) => {
+        // Prevent multiple clicks while processing the guess
         if (buttonsDisabled) return;
         setButtonsDisabled(true);
         makeGuess(isReal);
 
         if (
+            // Check if the game is over after making a guess
             gameState.score + (isReal === gameState.isRealAdvice ? 1 : -1) > 0 &&
             gameState.score + (isReal === gameState.isRealAdvice ? 1 : -1) < 20
         ) {
+            // If the game is not over, generate a new advice after a delay
             setTimeout(() => {
                 generateNewAdvice();
                 setButtonsDisabled(false);
@@ -94,7 +104,7 @@ export const GameBoard = ({gameLogic} : GameBoardProps) => {
                 <Paper withBorder p="xl" radius="md">
                 <Stack align="center">
                     <Text size="lg" ta="center" fw={500}>
-                    {loading ? 'Chargement...' : `"${gameState.currentAdvice}"`}
+                    {loading ? 'loading...' : `"${gameState.currentAdvice}"`}{/* Display the current advice or 'loading' */} 
                     </Text>
                     
                     <Group>

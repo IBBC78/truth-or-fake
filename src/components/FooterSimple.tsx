@@ -7,7 +7,9 @@ const links = [
 ];
 
 export function FooterSimple() {
+  // Map through the links array to create Anchor components for each link
   const items = links.map((link) => (
+    // Using Anchor component from Mantine to create links
     <Anchor<'a'>
       c="dimmed"
       key={link.label}
